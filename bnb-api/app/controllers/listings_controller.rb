@@ -3,11 +3,11 @@ class ListingsController < ApplicationController
     before_action :set_listing, only: [:show, :update, :destroy]
     
     def index
-        render :json Listing.all
+        render json: Listing.all
     end
 
     def show
-        redner :json @listing
+        redner json: @listing
     end
 
     def create
