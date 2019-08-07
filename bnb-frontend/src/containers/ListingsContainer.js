@@ -7,15 +7,26 @@ export default class ListingsContainer extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3001')
+        fetch('http://localhost:3001/listings')
             .then(res => res.json())
             .then(listings => this.setState({ listings }))
     }
     render() {
         if (this.state.listings.length === 0) {
             return <h1>Loading...</h1>
-
         }
+        return (
+            <div>
+                <ul>
+                    {this.state.listings.map(listing => 
+                    <div key={listing.id}>
+                        <h4>Name: {listing.name}</h4>
+                        <p>Address: {listing.address}</p>
+                        <p>Price: ${listing.price}</p>
+                    </div>)}
+                </ul>
+            </div>
+        )
     
     }
 }
